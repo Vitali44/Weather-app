@@ -9,18 +9,9 @@ class App extends Component{
   constructor(props){
     super(props);
 
-    this.state = {};
-
-    this.getWeather();
-  }
-
-  getWeather = async () => {
-    const api_call = await 
-    fetch(`https:/api.openweathermap.org/data/2.5/weather?q=Kiev&appid=${API_KEY}&units=metric`);
-
-    const response = await api_call.json();
-
-    console.log (response);
+    this.state = {
+      newCity:""
+    };
   }
 
   updateInput = event => {
@@ -29,22 +20,18 @@ class App extends Component{
     });
   };
 
-  addCityToState = () => {
-    const newCity = {
-      id: 1 + Math.random(),
-      value: this.state.newCity
-    };
-    console.log('list', this.state)
+  getWeather = async (e) => {
+    // e.preventDefault();
+    // const city = e.target.value;
+    const api_call = await 
+    fetch(`https:/api.openweathermap.org/data/2.5/weather?q=${this.state.newCity}&appid=${API_KEY}&units=metric`);
+    // fetch(`https:/api.openweathermap.org/data/2.5/weather?q=Minsk&appid=${API_KEY}&units=metric`);
 
-    this.setState(prevState => ({
-      listOfCities: [...prevState.listOfCities, newCity],
-      newCity: ""
-    }));
-  };
+    const response = await api_call.json();
 
-  // fetchWeather = () => {
+    console.log (response);
+  }
 
-  // }
 
   render() {
     return (
@@ -53,12 +40,12 @@ class App extends Component{
           <div className="appsField">
             <h2 className="title">Wheather</h2>
             <input
-            className="cityInput"
-            type="text" 
-            placeholder="City name"
-            name="city"
-            value={this.state.newCity}
-            onChange={this.updateInput}
+              className="cityInput"
+              type="text" 
+              placeholder="City name"
+              name="city"
+              value={this.state.newCity}
+              onChange={this.updateInput}
             />
             <button className="btnFind" onClick={this.getWeather}>
               Find
