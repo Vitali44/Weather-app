@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-image: url(https://wi-images.condecdn.net/image/doEYpG6Xd87/crop/1440/f/weather.jpg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.appsField {
+  background-color: rgb(141, 192, 184);
+  opacity: 0.8;
+  padding: 4% 6% 4%;
+  border: 0.1px solid red;
+  border-radius: 20px;
+}
+
+.title {
+  margin: 10px auto;
+  opacity: 1;
+}
